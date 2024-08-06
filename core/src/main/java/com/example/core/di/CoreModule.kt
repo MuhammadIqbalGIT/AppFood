@@ -1,5 +1,6 @@
 package com.example.core.di
 
+import com.example.core.BuildConfig
 import com.example.core.data.source.remote.network.ApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -18,14 +19,14 @@ val networkModule = module {
             .build()
     }
 
-    /*single {
+    single {
         val retrofit = Retrofit.Builder()
-            .baseUrl(Constant.BASE_URL)
+            .baseUrl(BuildConfig.BASE_API)
             .addConverterFactory(GsonConverterFactory.create())
             .client(get())
             .build()
         retrofit.create(ApiService::class.java)
-    }*/
+    }
 }
 
 /*
@@ -33,4 +34,5 @@ val repositoryModule = module {
     single<IMovieRepository> { MovieRepository(get()) }
     single { DetailDataSource(get()) }
     single<IMovieDetailRepository> { MovieDetailRepository(get()) }
-}*/
+}
+*/

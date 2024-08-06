@@ -17,6 +17,23 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+
+    flavorDimensions.add("env")
+
+    productFlavors {
+
+        create("dev") {
+            dimension = "env"
+            buildConfigField("String", "BASE_API", "\"https://www.themealdb.com/\"")
+        }
+
+        create("prod") {
+            dimension = "env"
+            buildConfigField("String", "BASE_API", "\"https://www.themealdb.com/\"")
+        }
+    }
+
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -32,6 +49,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    buildFeatures {
+     //   compose = true
+        buildConfig = true
     }
 }
 
