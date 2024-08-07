@@ -1,4 +1,4 @@
-package com.example.appfood.ui.category
+package com.example.appfood.ui.all_meal_category
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

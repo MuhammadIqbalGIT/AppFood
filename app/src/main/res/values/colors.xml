@@ -4,5 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <!--    Update UI v1 Start  -->
     <color name="stroke_default">#B5C2DA</color>
+    <color name="shimmer_background">#e0e0e0</color>
+    <color name="color_primary">#0C6BD1</color>
 
 </resources>

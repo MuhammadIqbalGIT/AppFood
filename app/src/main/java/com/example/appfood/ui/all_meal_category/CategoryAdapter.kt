@@ -1,7 +1,6 @@
-package com.example.appfood.ui.category
+package com.example.appfood.ui.all_meal_category
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -10,10 +9,10 @@ import com.example.appfood.databinding.CategoryItemBinding
 import com.example.core.data.source.remote.response.Category
 
 class CategoryAdapter
-    :ListAdapter<Category, CategoryAdapter.CategoryViewHolder>(DiffCallback()) {
+    : ListAdapter<Category, CategoryAdapter.CategoryViewHolder>(DiffCallback()) {
 
 
-   // var onItemClickListener: ((MoreProduct) -> Unit)? = null
+    // var onItemClickListener: ((MoreProduct) -> Unit)? = null
 
 
     override fun onCreateViewHolder(
@@ -40,26 +39,21 @@ class CategoryAdapter
         fun bindTo(
             item: Category,
         ) {
-
             with(binding) {
-                tvItemNamaProduk.text = item.strCategory
-
-            }
-
-
-
+                tvCategory.text = item.strCategory
 
             }
         }
     }
+}
 
-    class DiffCallback : DiffUtil.ItemCallback<Category>() {
-        override fun areItemsTheSame(oldItem: Category, newItem: Category): Boolean {
-            return oldItem.idCategory == newItem.idCategory
-        }
-
-        override fun areContentsTheSame(oldItem: Category, newItem: Category): Boolean {
-            return oldItem == newItem
-        }
+class DiffCallback : DiffUtil.ItemCallback<Category>() {
+    override fun areItemsTheSame(oldItem: Category, newItem: Category): Boolean {
+        return oldItem.idCategory == newItem.idCategory
     }
+
+    override fun areContentsTheSame(oldItem: Category, newItem: Category): Boolean {
+        return oldItem == newItem
+    }
+}
 

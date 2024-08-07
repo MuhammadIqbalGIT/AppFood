@@ -4,15 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="itemView"
-            type="com.example.core.data.source.remote.response.Category" />
-
-        <import type="android.view.View" />
-    </data>
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/llMeal"
@@ -36,8 +27,7 @@
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent" />
 
         <TextView
-            android:id="@+id/tvItemNamaProduk"
-            android:text="@{itemView.strCategory}"
+            android:id="@+id/tvCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/categoryFragment"
-        android:name="com.example.appfood.ui.category.CategoryFragment"
+        android:name="com.example.appfood.ui.all_meal_category.CategoryFragment"
         android:label="fragment_category"
         tools:layout="@layout/fragment_category" />
     <fragment
@@ -20,4 +20,22 @@
         android:name="com.example.appfood.ui.B.FragmentB"
         android:label="fragment_b"
         tools:layout="@layout/fragment_b" />
+    <fragment
+        android:id="@+id/categoryFilterFragment"
+        android:name="com.example.appfood.ui.filter_category.CategoryFilterFragment"
+        android:label="fragment_category_filter"
+        tools:layout="@layout/fragment_category_filter" >
+        <action
+            android:id="@+id/action_categoryFilterFragment_to_detailMealFragment"
+            app:destination="@id/detailMealFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailMealFragment"
+        android:name="com.example.appfood.ui.detail_meal.DetailMealFragment"
+        android:label="fragment_detail_meal"
+        tools:layout="@layout/fragment_detail_meal" >
+        <argument
+            android:name="idMeal"
+            app:argType="string" />
+    </fragment>
 </navigation>

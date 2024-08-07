@@ -6,7 +6,7 @@
             android:icon="@drawable/ic_launcher_background"
             android:title="Category" />
         <item
-            android:id="@+id/fragA"
+            android:id="@+id/categoryFilterFragment"
             android:icon="@drawable/ic_launcher_background"
             android:title="Produk" />
 
