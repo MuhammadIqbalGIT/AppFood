@@ -1,7 +1,10 @@
 package com.example.appfood
 
 import android.app.Application
+import com.example.appfood.di.useCaseModule
+import com.example.appfood.di.viewModelModule
 import com.example.core.di.networkModule
+import com.example.core.di.repositoryModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -18,9 +21,9 @@ class MyApplication : Application() {
             modules(
                 listOf(
                     networkModule,
-                   /* repositoryModule,
+                    repositoryModule,
                     useCaseModule,
-                    viewModelModule*/
+                    viewModelModule
                 )
             )
         }

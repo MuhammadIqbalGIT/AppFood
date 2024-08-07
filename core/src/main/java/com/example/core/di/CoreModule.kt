@@ -1,7 +1,10 @@
 package com.example.core.di
 
 import com.example.core.BuildConfig
+import com.example.core.data.repository.CategoryRepository
+import com.example.core.data.source.remote.datasource.CategoryDataSource
 import com.example.core.data.source.remote.network.ApiService
+import com.example.core.domain.repository.ICategoryRepository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -29,10 +32,14 @@ val networkModule = module {
     }
 }
 
-/*
-val repositoryModule = module {
+/*val repositoryModule = module {
     single<IMovieRepository> { MovieRepository(get()) }
     single { DetailDataSource(get()) }
     single<IMovieDetailRepository> { MovieDetailRepository(get()) }
+}*/
+
+val repositoryModule = module {
+    single<ICategoryRepository> { CategoryRepository(get()) }
+    single { CategoryDataSource(get()) }
+   /* single<IMovieDetailRepository> { MovieDetailRepository(get()) }*/
 }
-*/

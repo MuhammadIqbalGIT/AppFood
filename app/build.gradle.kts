@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+
 }
 
 android {
@@ -53,6 +54,9 @@ android {
     buildFeatures {
      //   compose = true
         buildConfig = true
+        //noinspection DataBindingWithoutKapt
+        dataBinding = true
+        viewBinding = true
     }
 }
 
@@ -72,11 +76,13 @@ dependencies {
     //koin
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.core)
-
-
-
-
     implementation(libs.koin.android.compat)
     implementation(libs.koin.androidx.workmanager)
     implementation(libs.koin.androidx.navigation)
+
+    //Navigation
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
+
+
 }

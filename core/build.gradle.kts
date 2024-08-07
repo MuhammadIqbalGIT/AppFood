@@ -1,6 +1,7 @@
-    plugins {
+plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+
 }
 
 android {
@@ -72,4 +73,6 @@ dependencies {
     implementation(libs.koin.android.compat)
     implementation(libs.koin.androidx.workmanager)
     implementation(libs.koin.androidx.navigation)
+
+    
 }

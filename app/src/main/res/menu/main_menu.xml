@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item
+            android:id="@+id/categoryFragment"
+            android:icon="@drawable/ic_launcher_background"
+            android:title="Category" />
+        <item
+            android:id="@+id/fragA"
+            android:icon="@drawable/ic_launcher_background"
+            android:title="Produk" />
+
+        <item
+            android:id="@+id/fragB"
+            android:icon="@drawable/ic_launcher_background"
+            android:title="aa" />
+
+</menu>

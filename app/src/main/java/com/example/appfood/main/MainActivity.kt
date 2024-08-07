@@ -1,21 +1,44 @@
 package com.example.appfood.main
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.example.appfood.R
+import com.example.appfood.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    lateinit var binding: ActivityMainBinding
+
+    private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
+        val host: NavHostFragment =
+            supportFragmentManager.findFragmentById(R.id.mainSupplierNewNavHostFragment) as NavHostFragment
+        navController = host.navController
+
+        val navGraph =
+            navController.navInflater.inflate(R.navigation.nav_main)
+        navController.graph = navGraph
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.categoryFragment ||
+                destination.id == R.id.fragA ||
+                destination.id == R.id.fragB
+            ) {
+                binding.navView.visibility = View.VISIBLE
+            } else {
+                binding.navView.visibility = View.GONE
+            }
         }
+
+        binding.navView.setupWithNavController(navController)
     }
 }
