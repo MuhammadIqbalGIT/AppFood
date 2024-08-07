@@ -7,28 +7,22 @@
     tools:context="com.example.appfood.main.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/mainSupplierNewNavHostFragment"
+        android:id="@+id/mainSupplierNewRefactorNavHostFragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@+id/navView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/nav_main" />
-
+        app:layout_constraintBottom_toTopOf="@id/navView"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:elevation="8dp"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:menu="@menu/main_menu"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/main_menu" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

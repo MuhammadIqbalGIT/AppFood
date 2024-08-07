@@ -10,9 +10,10 @@ import androidx.lifecycle.lifecycleScope
 import com.example.appfood.databinding.FragmentCategoryBinding
 import com.example.appfood.ui.base.BaseFragment
 import com.example.core.data.source.Resource
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class CategoryFragment : BaseFragment<FragmentCategoryBinding>() {
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentCategoryBinding
         get() = FragmentCategoryBinding::inflate

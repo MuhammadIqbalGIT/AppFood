@@ -1,7 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-
+    alias(libs.plugins.kotlinAndroidKsp)
+    alias(libs.plugins.hiltAndroid)
 }
 
 android {
@@ -65,7 +66,7 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
 
-    //koin
+   /* //koin
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.core)
 
@@ -73,6 +74,10 @@ dependencies {
     implementation(libs.koin.android.compat)
     implementation(libs.koin.androidx.workmanager)
     implementation(libs.koin.androidx.navigation)
+*/
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 
-    
+
+
 }

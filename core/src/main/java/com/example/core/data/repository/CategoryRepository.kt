@@ -4,11 +4,14 @@ import com.example.core.data.source.OnlyNetworkBoundResource
 import com.example.core.data.source.Resource
 import com.example.core.data.source.remote.datasource.CategoryDataSource
 import com.example.core.data.source.remote.network.ApiResponse
+import com.example.core.data.source.remote.network.ApiService
 import com.example.core.data.source.remote.response.Category
 import com.example.core.domain.repository.ICategoryRepository
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class CategoryRepository(
+class CategoryRepository @Inject constructor(
+    private val apiService: ApiService,
     private val categoryDataSource: CategoryDataSource
 ) : ICategoryRepository{
 
