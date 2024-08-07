@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <!--    Update UI v1 Start  -->
+    <color name="stroke_default">#B5C2DA</color>
+
 </resources>
