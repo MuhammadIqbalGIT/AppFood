@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.appfood.databinding.DetailMealItemBinding
+import com.example.appfood.databinding.SearchMealItemBinding
 
 class SearchMealAdapter
     : ListAdapter<Meals, SearchMealAdapter.SearchMealViewHolder>(DiffCallback()) {
@@ -20,7 +21,7 @@ class SearchMealAdapter
     ): SearchMealViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding =
-            DetailMealItemBinding.inflate(inflater, parent, false)
+            SearchMealItemBinding.inflate(inflater, parent, false)
         return SearchMealViewHolder(binding)
     }
 
@@ -31,7 +32,7 @@ class SearchMealAdapter
 
     }
 
-    inner class SearchMealViewHolder(private val binding: DetailMealItemBinding) :
+    inner class SearchMealViewHolder(private val binding: SearchMealItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
 
@@ -39,37 +40,8 @@ class SearchMealAdapter
             item: Meals,
         ) {
             with(binding) {
-                imageViewMealThumb.visibility =
-                    if (item.strMealThumb.isNullOrEmpty()) View.GONE else View.VISIBLE
-                textViewMealName.visibility =
-                    if (item.strMeal.isNullOrEmpty()) View.GONE else View.VISIBLE
-                textViewCategory.visibility =
-                    if (item.strCategory.isNullOrEmpty()) View.GONE else View.VISIBLE
-                textViewArea.visibility =
-                    if (item.strArea.isNullOrEmpty()) View.GONE else View.VISIBLE
-                textViewInstructions.visibility =
-                    if (item.strInstructions.isNullOrEmpty()) View.GONE else View.VISIBLE
-                textViewTags.visibility =
-                    if (item.strTags.isNullOrEmpty()) View.GONE else View.VISIBLE
-                textViewYoutube.visibility =
-                    if (item.strYoutube.isNullOrEmpty()) View.GONE else View.VISIBLE
-                textViewSource.visibility =
-                    if (item.strSource.isNullOrEmpty()) View.GONE else View.VISIBLE
-                textViewImageSource.visibility =
-                    if (item.strImageSource.isNullOrEmpty()) View.GONE else View.VISIBLE
-                textViewCreativeCommons.visibility =
-                    if (item.strCreativeCommonsConfirmed.isNullOrEmpty()) View.GONE else View.VISIBLE
-
-                imageViewMealThumb.load(item.strMealThumb)
-                textViewMealName.text = item.strMeal
-                textViewCategory.text = item.strCategory
-                textViewArea.text = item.strArea
-                textViewInstructions.text = item.strInstructions
-                textViewTags.text = item.strTags
-                textViewYoutube.text = item.strYoutube
-                textViewSource.text = item.strSource
-                textViewImageSource.text = item.strImageSource
-                textViewCreativeCommons.text = item.strCreativeCommonsConfirmed
+                collapsingToolbar.title = item.strMeal
+                imgMealDetail.load(item.strMealThumb)
             }
         }
     }

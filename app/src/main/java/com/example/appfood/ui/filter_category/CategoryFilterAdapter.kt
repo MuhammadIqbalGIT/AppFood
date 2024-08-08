@@ -41,9 +41,8 @@ class CategoryFilterAdapter
 
             with(binding) {
                 tvMeal.text= item.strMeal
-                ivMeal.load(item.strMealThumb)
-
-                btnDetail.setOnClickListener {
+                imgSearchedMeal.load(item.strMealThumb)
+                tvSeeDetail.setOnClickListener {
                     onButtonDetailClick.invoke(item)
                 }
             }

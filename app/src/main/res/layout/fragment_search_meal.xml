@@ -204,8 +204,8 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/llFilterSearch"
-        tools:itemCount="3"
-        tools:listitem="@layout/detail_meal_item" />
+        tools:itemCount="4"
+        tools:listitem="@layout/search_meal_item" />
 
 
 

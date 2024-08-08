@@ -20,6 +20,7 @@ hiltCompiler = "2.49"
 lottie = "6.0.0"
 navArgs = "2.7.0"
 coil = "2.6.0"
+gifDrawable = "1.2.17"
 
 
 
@@ -60,6 +61,14 @@ hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.r
 
 
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
+
+gif-drawable = { group = "pl.droidsonroids.gif", name = "android-gif-drawable", version.ref = "gifDrawable" }
+
+
+
+
+
+
 
 
 [plugins]

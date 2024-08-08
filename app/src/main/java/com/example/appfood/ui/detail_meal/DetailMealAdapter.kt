@@ -1,9 +1,11 @@
 package com.example.appfood.ui.detail_meal
 
 import Meals
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -38,38 +40,16 @@ class DetailMealAdapter
             item: Meals,
         ) {
             with(binding) {
-                imageViewMealThumb.visibility =
-                    if (item.strMealThumb.isNullOrEmpty()) View.GONE else View.VISIBLE
-                textViewMealName.visibility =
-                    if (item.strMeal.isNullOrEmpty()) View.GONE else View.VISIBLE
-                textViewCategory.visibility =
-                    if (item.strCategory.isNullOrEmpty()) View.GONE else View.VISIBLE
-                textViewArea.visibility =
-                    if (item.strArea.isNullOrEmpty()) View.GONE else View.VISIBLE
-                textViewInstructions.visibility =
-                    if (item.strInstructions.isNullOrEmpty()) View.GONE else View.VISIBLE
-                textViewTags.visibility =
-                    if (item.strTags.isNullOrEmpty()) View.GONE else View.VISIBLE
-                textViewYoutube.visibility =
-                    if (item.strYoutube.isNullOrEmpty()) View.GONE else View.VISIBLE
-                textViewSource.visibility =
-                    if (item.strSource.isNullOrEmpty()) View.GONE else View.VISIBLE
-                textViewImageSource.visibility =
-                    if (item.strImageSource.isNullOrEmpty()) View.GONE else View.VISIBLE
-                textViewCreativeCommons.visibility =
-                    if (item.strCreativeCommonsConfirmed.isNullOrEmpty()) View.GONE else View.VISIBLE
+                imgMealDetail.load(item.strMealThumb)
+                tvAreaInfo.text = item.strArea
+                tvCategoryInfo.text = item.strCategory
+                tvInstructions.text = item.strInstructions
+                collapsingToolbar.title = item.strMeal
 
-                imageViewMealThumb.load(item.strMealThumb)
-                textViewMealName.text = item.strMeal
-                textViewCategory.text = item.strCategory
-                textViewArea.text = item.strArea
-                textViewInstructions.text = item.strInstructions
-                textViewTags.text = item.strTags
-                textViewYoutube.text = item.strYoutube
-                textViewSource.text = item.strSource
-                textViewImageSource.text = item.strImageSource
-                textViewCreativeCommons.text = item.strCreativeCommonsConfirmed
-
+                imgYoutube.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(item.strYoutube))
+                    itemView.context.startActivity(intent)
+                }
             }
         }
     }

@@ -90,4 +90,8 @@ dependencies {
 
     //coil for load image
     implementation(libs.coilAndroid)
+    
+    /*//image gif
+    implementation(libs.gifDrawable)*/
+
 }

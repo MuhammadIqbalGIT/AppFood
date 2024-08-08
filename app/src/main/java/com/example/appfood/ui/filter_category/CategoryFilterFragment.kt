@@ -49,6 +49,7 @@ class CategoryFilterFragment : BaseFragment<FragmentCategoryFilterBinding>() {
         rvCategory.adapter = adapterMealByCategory
         rvCategory.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        viewModel.getMealsByCategory("Seafood")
     }
 
     override fun FragmentCategoryFilterBinding.initEvent() {

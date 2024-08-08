@@ -26,7 +26,7 @@ class SearchMealFragment : BaseFragment<FragmentSearchMealBinding>() {
         get() = FragmentSearchMealBinding::inflate
 
     private val viewModel: SearchMealViewModel by viewModels()
-    private lateinit var adapterDeailMeal: DetailMealAdapter
+    private lateinit var adapterDeailMeal: SearchMealAdapter
     private var searchDebounceReady = true
     private val searchKey = MutableStateFlow("")
 
@@ -42,7 +42,7 @@ class SearchMealFragment : BaseFragment<FragmentSearchMealBinding>() {
 
 
     override fun FragmentSearchMealBinding.initUI() {
-        adapterDeailMeal = DetailMealAdapter()
+        adapterDeailMeal = SearchMealAdapter()
         rvMeals.adapter = adapterDeailMeal
         rvMeals.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)

@@ -35,8 +35,8 @@ class CategoryAdapter
             item: Category,
         ) {
             with(binding) {
-                tvCategory.text = item.strCategory
-                ivItemMeal.load(item.strCategoryThumb)
+                tvMealName.text = item.strCategory
+                imgMeal.load(item.strCategoryThumb)
             }
         }
     }
