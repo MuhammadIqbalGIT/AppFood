@@ -4,7 +4,7 @@
         <item
             android:id="@+id/categoryFragment"
             android:icon="@drawable/ic_home"
-            android:title="Category Meal" />
+            android:title="Home" />
         <item
             android:id="@+id/categoryFilterFragment"
             android:icon="@drawable/categories"
@@ -12,7 +12,7 @@
 
         <item
             android:id="@+id/searchMealFragment"
-            android:icon="@drawable/categories"
+            android:icon="@drawable/baseline_article_24"
             android:title="Meal" />
 
 </menu>

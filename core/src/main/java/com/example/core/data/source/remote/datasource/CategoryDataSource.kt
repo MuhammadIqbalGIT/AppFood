@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-class CategoryDataSource @Inject constructor (private val api: ApiService){
+    class CategoryDataSource @Inject constructor (private val api: ApiService){
 
     suspend fun getAllCategory(): Flow<ApiResponse<List<Category>>> =
         flow {
