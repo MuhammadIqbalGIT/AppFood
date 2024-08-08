@@ -28,6 +28,10 @@
         <argument
             android:name="idMeal"
             app:argType="string" />
+        <action
+            android:id="@+id/action_detailMealFragment_to_categoryFilterFragment"
+            app:popUpTo="@id/categoryFilterFragment"
+            app:destination="@id/categoryFilterFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchMealFragment"
