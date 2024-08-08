@@ -10,16 +10,7 @@
         android:name="com.example.appfood.ui.all_meal_category.CategoryFragment"
         android:label="fragment_category"
         tools:layout="@layout/fragment_category" />
-    <fragment
-        android:id="@+id/fragA"
-        android:name="com.example.appfood.ui.A.FragmentA"
-        android:label="fragment_a"
-        tools:layout="@layout/fragment_a" />
-    <fragment
-        android:id="@+id/fragB"
-        android:name="com.example.appfood.ui.B.FragmentB"
-        android:label="fragment_b"
-        tools:layout="@layout/fragment_b" />
+
     <fragment
         android:id="@+id/categoryFilterFragment"
         android:name="com.example.appfood.ui.filter_category.CategoryFilterFragment"
@@ -38,4 +29,8 @@
             android:name="idMeal"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/searchMealFragment"
+        android:name="com.example.appfood.ui.search_meal.SearchMealFragment"
+        android:label="SearchMealFragment" />
 </navigation>

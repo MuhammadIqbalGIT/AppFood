@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.categoryFragment ||
                 destination.id == R.id.categoryFilterFragment ||
-                destination.id == R.id.fragB
+                destination.id == R.id.searchMealFragment
             ) {
                 binding.navView.visibility = View.VISIBLE
             } else {

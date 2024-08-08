@@ -1,6 +1,6 @@
-package com.example.appfood.ui.filter_category
+package com.example.appfood.ui.filter_category.sheet
 
-import Meals
+import CategoryAll
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.core.data.source.Resource
@@ -13,20 +13,20 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CategoryFilterViewModel @Inject constructor(
+class AllCategoryViewModel @Inject constructor(
     private val categoryUseCase: CategoryUseCase
 
 ) : ViewModel() {
-    private val _mealsByCategory = MutableStateFlow<Resource<List<Meal>>>(Resource.Loading())
-    val category: Flow<Resource<List<Meal>>>
-        get() = _mealsByCategory
+    private val _listCategory = MutableStateFlow<Resource<List<CategoryAll>>>(Resource.Loading())
+    val allCategory: Flow<Resource<List<CategoryAll>>>
+        get() = _listCategory
 
 
-    fun getMealsByCategory(category : String){
+    fun getListCategory() {
         viewModelScope.launch {
-            _mealsByCategory.value = Resource.Loading()
-            categoryUseCase.getMealsByCategory(category).collect{
-                _mealsByCategory.value = it
+            _listCategory.value = Resource.Loading()
+            categoryUseCase.getListCategory().collect {
+                _listCategory.value = it
             }
         }
     }

@@ -19,6 +19,7 @@ hilt = "2.49"
 hiltCompiler = "2.49"
 lottie = "6.0.0"
 navArgs = "2.7.0"
+coil = "2.6.0"
 
 
 
@@ -50,6 +51,7 @@ navigation_fragment = { module = "androidx.navigation:navigation-fragment-ktx", 
 navigation_ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
 
 
+coilAndroid = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 
 
 

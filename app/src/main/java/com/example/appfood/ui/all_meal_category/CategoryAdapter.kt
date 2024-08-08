@@ -5,15 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.appfood.databinding.CategoryItemBinding
 import com.example.core.data.source.remote.response.Category
 
 class CategoryAdapter
     : ListAdapter<Category, CategoryAdapter.CategoryViewHolder>(DiffCallback()) {
-
-
-    // var onItemClickListener: ((MoreProduct) -> Unit)? = null
-
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -28,8 +25,6 @@ class CategoryAdapter
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         val item = getItem(position)
         holder.bindTo(item)
-
-
     }
 
     inner class CategoryViewHolder(private val binding: CategoryItemBinding) :
@@ -41,7 +36,7 @@ class CategoryAdapter
         ) {
             with(binding) {
                 tvCategory.text = item.strCategory
-
+                ivItemMeal.load(item.strCategoryThumb)
             }
         }
     }

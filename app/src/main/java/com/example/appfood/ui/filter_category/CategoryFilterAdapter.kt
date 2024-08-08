@@ -5,16 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.appfood.databinding.MealCategoryFilterItemBinding
 import com.example.core.data.source.remote.response.Meal
 
 class CategoryFilterAdapter
     : ListAdapter<Meal, CategoryFilterAdapter.CategoryFilterViewHolder>(DiffCallback()) {
 
-
-
     lateinit var onButtonDetailClick: ((Meal) -> Unit)
-
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -43,6 +41,7 @@ class CategoryFilterAdapter
 
             with(binding) {
                 tvMeal.text= item.strMeal
+                ivMeal.load(item.strMealThumb)
 
                 btnDetail.setOnClickListener {
                     onButtonDetailClick.invoke(item)

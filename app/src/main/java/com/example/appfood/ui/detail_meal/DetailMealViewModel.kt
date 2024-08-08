@@ -1,4 +1,4 @@
-package com.example.appfood.ui.filter_category
+package com.example.appfood.ui.detail_meal
 
 import Meals
 import androidx.lifecycle.ViewModel
@@ -12,21 +12,23 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
+
 @HiltViewModel
-class CategoryFilterViewModel @Inject constructor(
+class DetailMealViewModel @Inject constructor(
     private val categoryUseCase: CategoryUseCase
 
 ) : ViewModel() {
-    private val _mealsByCategory = MutableStateFlow<Resource<List<Meal>>>(Resource.Loading())
-    val category: Flow<Resource<List<Meal>>>
-        get() = _mealsByCategory
+    private val _mealsDetailsById = MutableStateFlow<Resource<List<Meals>>>(Resource.Loading())
+    val mealsDetailsById: Flow<Resource<List<Meals>>>
+        get() = _mealsDetailsById
 
 
-    fun getMealsByCategory(category : String){
+    fun getMealsDetailsById(idMeal : String){
         viewModelScope.launch {
-            _mealsByCategory.value = Resource.Loading()
-            categoryUseCase.getMealsByCategory(category).collect{
-                _mealsByCategory.value = it
+            _mealsDetailsById.value = Resource.Loading()
+            categoryUseCase.getMealsDetailsById(idMeal).collect{
+                _mealsDetailsById.value = it
             }
         }
     }

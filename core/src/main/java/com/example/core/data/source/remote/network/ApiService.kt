@@ -1,5 +1,6 @@
 package com.example.core.data.source.remote.network
 
+import AllCategoryResponse
 import MealResponseById
 import com.example.core.data.source.remote.response.CategoryResponse
 import com.example.core.data.source.remote.response.MealResponse
@@ -23,5 +24,14 @@ interface ApiService {
     suspend fun getMealsDetailsById(
         @Query("i") i: String
     ): Response<MealResponseById>
+
+    @GET("api/json/v1/1/search.php")
+    suspend fun getMealByName(
+        @Query("s") s: String
+    ): Response<MealResponseById>
+
+    @GET("api/json/v1/1/list.php?c=list")
+    suspend fun getListCategory(
+    ): Response<AllCategoryResponse>
 
 }

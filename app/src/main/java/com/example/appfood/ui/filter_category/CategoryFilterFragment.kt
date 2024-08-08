@@ -1,26 +1,26 @@
 package com.example.appfood.ui.filter_category
 
-import android.content.res.Resources
+import CategoryAll
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.doAfterTextChanged
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.appfood.R
-import com.example.appfood.databinding.FragmentCategoryBinding
 import com.example.appfood.databinding.FragmentCategoryFilterBinding
-import com.example.appfood.ui.all_meal_category.CategoryAdapter
-import com.example.appfood.ui.all_meal_category.CategoryViewModel
 import com.example.appfood.ui.base.BaseFragment
-import com.example.appfood.utils.widget.RecyclerViewGridSpace
+import com.example.appfood.ui.filter_category.sheet.BottomSheetCategoryFilterFragment
 import com.example.core.data.source.Resource
+import com.example.core.data.source.remote.response.Meal
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -30,48 +30,74 @@ class CategoryFilterFragment : BaseFragment<FragmentCategoryFilterBinding>() {
 
     private val viewModel: CategoryFilterViewModel by viewModels()
     private lateinit var adapterMealByCategory: CategoryFilterAdapter
+    private lateinit var mealss: List<Meal>
+    private var category: String = ""
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
+            getData()
             initUI()
             initEvent()
             initObserve()
         }
     }
 
-
-
-    private val Int.px: Int get() = (this * Resources.getSystem().displayMetrics.density).toInt()
     override fun FragmentCategoryFilterBinding.initUI() {
         adapterMealByCategory = CategoryFilterAdapter()
         rvCategory.adapter = adapterMealByCategory
         rvCategory.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        viewModel.getMealsByCategory("Seafood")
-
     }
 
     override fun FragmentCategoryFilterBinding.initEvent() {
         adapterMealByCategory.onButtonDetailClick = {
-            val action = CategoryFilterFragmentDirections.actionCategoryFilterFragmentToDetailMealFragment(it.idMeal)
-            Log.d("dsadasdasdasdsadadas",it.idMeal)
+            val action =
+                CategoryFilterFragmentDirections.actionCategoryFilterFragmentToDetailMealFragment(it.idMeal)
             findNavController().navigate(action)
+        }
+
+
+        cardFilterDefault.setOnClickListener {
+            showBottomSheet()
         }
     }
 
     override fun FragmentCategoryFilterBinding.initObserve() {
         lifecycleScope.launch {
-            viewModel.category.collect{
-                when(it){
-                    is Resource.Loading -> "" //not implement for handle loading
+            viewModel.category.collect {
+                when (it) {
+                    is Resource.Loading -> {
+                        loadingDialog?.show()
+                    }
+
                     is Resource.Success -> {
-                        adapterMealByCategory.submitList(it.data)
-                        Toast.makeText(requireContext(), "berhasil", Toast.LENGTH_SHORT).show()
+                        val data = it.data
+                        adapterMealByCategory.submitList(data)
+                        mealss = it.data!!
+                    }
+
+                    is Resource.Error -> {
+                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                     }
                     else -> ""
                 }
+            }
+        }
+    }
+
+    private fun showBottomSheet() {
+        val sheet = BottomSheetCategoryFilterFragment()
+        sheet.show(parentFragmentManager, "BottomSheetCategoryFilterFragment")
+    }
+
+    private fun getData() {
+        setFragmentResultListener("request_key") { requestKey, result ->
+            val selectedItem = result.getSerializable("selected_item") as? CategoryAll
+            if (selectedItem != null) {
+                category = selectedItem.strCategory
+                viewModel.getMealsByCategory(category)
             }
         }
     }

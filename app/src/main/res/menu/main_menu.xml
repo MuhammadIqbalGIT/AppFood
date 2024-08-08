@@ -4,15 +4,15 @@
         <item
             android:id="@+id/categoryFragment"
             android:icon="@drawable/ic_launcher_background"
-            android:title="Category" />
+            android:title="Category Meal" />
         <item
             android:id="@+id/categoryFilterFragment"
             android:icon="@drawable/ic_launcher_background"
-            android:title="Produk" />
+            android:title="Filter Meal" />
 
         <item
-            android:id="@+id/fragB"
+            android:id="@+id/searchMealFragment"
             android:icon="@drawable/ic_launcher_background"
-            android:title="aa" />
+            android:title="Meal" />
 
 </menu>

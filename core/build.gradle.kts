@@ -66,18 +66,7 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
 
-   /* //koin
-    implementation(platform(libs.koin.bom))
-    implementation(libs.koin.core)
-
-
-    implementation(libs.koin.android.compat)
-    implementation(libs.koin.androidx.workmanager)
-    implementation(libs.koin.androidx.navigation)
-*/
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
-
-
 
 }

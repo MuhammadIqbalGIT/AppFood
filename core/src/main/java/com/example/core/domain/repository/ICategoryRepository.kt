@@ -1,5 +1,6 @@
 package com.example.core.domain.repository
 
+import CategoryAll
 import Meals
 import com.example.core.data.source.Resource
 import com.example.core.data.source.remote.response.Category
@@ -10,4 +11,6 @@ interface ICategoryRepository{
     fun getAllCategory(): Flow<Resource<List<Category>>>
     fun getMealsByCategory(category: String): Flow<Resource<List<Meal>>>
     fun getMealsDetailsById(idMeal: String): Flow<Resource<List<Meals>>>
+    fun getMealByName(nameMeal: String): Flow<Resource<List<Meals>>>
+    fun getListCategory(): Flow<Resource<List<CategoryAll>>>
 }

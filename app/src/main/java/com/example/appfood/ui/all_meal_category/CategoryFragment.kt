@@ -47,23 +47,23 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>() {
                 addItemDecoration(decorGrid)
             }
         }
-
     }
 
     override fun FragmentCategoryBinding.initObserve() {
         lifecycleScope.launch {
             viewModel.category.collect{
                 when(it){
-                    is Resource.Loading -> "" //not implement for handle loading
+                    is Resource.Loading -> {loadingDialog?.show()}
                     is Resource.Success -> {
                         adapterCategory.submitList(it.data)
-                        Toast.makeText(requireContext(), "berhasil", Toast.LENGTH_SHORT).show()
+                    }
+                    is Resource.Error -> {
+                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                     }
                     else -> ""
                 }
             }
         }
-
         viewModel.getAllCategory()
     }
 }

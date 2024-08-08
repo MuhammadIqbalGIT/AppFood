@@ -1,5 +1,6 @@
 package com.example.core.domain.usecase
 
+import CategoryAll
 import Meals
 import com.example.core.data.source.Resource
 import com.example.core.data.source.remote.response.Category
@@ -22,4 +23,12 @@ class CategoryInteractor @Inject constructor(private val categoryRepository: ICa
     override fun getMealsDetailsById(idMeal : String
     ): Flow<Resource<List<Meals>>> =
         categoryRepository.getMealsDetailsById(idMeal)
+
+    override fun getMealByName(nameMeal : String
+    ): Flow<Resource<List<Meals>>> =
+        categoryRepository.getMealByName(nameMeal)
+
+    override fun getListCategory(
+    ): Flow<Resource<List<CategoryAll>>> =
+        categoryRepository.getListCategory()
 }

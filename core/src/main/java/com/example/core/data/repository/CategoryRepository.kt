@@ -1,5 +1,6 @@
 package com.example.core.data.repository
 
+import CategoryAll
 import Meals
 import com.example.core.data.source.OnlyNetworkBoundResource
 import com.example.core.data.source.Resource
@@ -35,6 +36,20 @@ class CategoryRepository @Inject constructor(
         object : OnlyNetworkBoundResource<List<Meals>>(){
             override suspend fun createCall(): Flow<ApiResponse<List<Meals>>> {
                 return categoryDataSource.getMealsDetailsById(idMeal)
+            }
+        }.asFlow()
+
+    override fun getMealByName(nameMeal: String): Flow<Resource<List<Meals>>> =
+        object : OnlyNetworkBoundResource<List<Meals>>(){
+            override suspend fun createCall(): Flow<ApiResponse<List<Meals>>> {
+                return categoryDataSource.getMealByName(nameMeal)
+            }
+        }.asFlow()
+
+    override fun getListCategory(): Flow<Resource<List<CategoryAll>>> =
+        object : OnlyNetworkBoundResource<List<CategoryAll>>(){
+            override suspend fun createCall(): Flow<ApiResponse<List<CategoryAll>>> {
+                return categoryDataSource.getListCategory()
             }
         }.asFlow()
 }
